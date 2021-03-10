@@ -15,13 +15,13 @@ DOT Framework bestaat uit 3 verschillende niveau's die moeten helpen met de stru
 
 1. Wat (de vraag van het onderzoek)
 
-In mijn persoonlijk project word een microservice architectuur gebruikt. In deze architectuur worden alle groten taken in de back-end verdeelt over zogenoemde services. Elke service heeft zijn eigen verantwoordelijkheid en mag maar een specifieke taak uitvoeren. Microservices zijn een complex onderwerp en er moet rekening gehouden worden met veel verschillende concepten. 
+In mijn persoonlijk project word een microservice architectuur gebruikt. In deze architectuur worden alle groten taken in de back-end verdeelt over zogenoemde services. Elke service heeft zijn eigen verantwoordelijkheid en mag maar een specifieke taak uitvoeren. Microservices zijn een complex onderwerp en er moet rekening gehouden worden met veel verschillende concepten. Hier is een algemene onderzoeksvraag uit ontstaan waarop het onderzoek is gebaseerd:
 
-De hoofdvraag: **Hoe maak ik een microservice die gebruik maakt van MongoDB als data-store?**. 
+**Hoe maak ik een microservice die gebruik maakt van MongoDB als data-store?** 
 
 2. Waarom (de reden van het onderzoek)
 
-Om meer te weten te komen over bepaalde concepten heb ik besloten een proof-of-concept te maken die onderwerpen in het klein laat terugkomen. POC's dienen niet alleen als bewijslast, maar ook als geheugensteun om eventueel terug te kijken hoe iets precies werkt. Deze POC zal ook gebruikt worden bij het onderzoeken van ondere hoofdvragen gericht op bijvoorbeeld CI-CD, en Docker.
+Om meer te weten te komen over bepaalde concepten heb ik besloten een proof-of-concept te maken die onderwerpen in het klein laat terugkomen. POC's dienen niet alleen als bewijslast, maar ook als geheugensteun om eventueel terug te kijken hoe iets precies werkt. Deze POC zal ook gebruikt worden bij het onderzoeken van andere hoofdvragen gericht op CI-CD, en Docker. 
 
 Probleemverkenning:
 
@@ -38,6 +38,10 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 - Hoe kan ik error-handling op een gebruiksvriendelijke manier toepassen?
 - Hoe kan ik gebruik maken van een 'mapper' voor het automatiseren van het mappen naar / van DTO's?
 
-- Probleemverkenning: Ga na wat de complexiteit van het probleem / de vraag is, en bestaat het uit meerdere vragen? Is het een nieuwe vraag, of is er al informatie beschikbaar bijvoorbeeld op internet? Op welk niveau bevind het probleem zich? Is het een vraag die wereld-weid niet bewantwoord is, of is het een individueel probleem?
-- 
+Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. Meer deelvragen kunnen tijdens het onderzoek ontstaan en zullen bijgevoegd worden indien nodig.
 
+Informatiebronnen:
+
+Probleem-niveau:
+
+- Probleemverkenning: Ga na wat de complexiteit van het probleem / de vraag is, en bestaat het uit meerdere vragen? Is het een nieuwe vraag, of is er al informatie beschikbaar bijvoorbeeld op internet? Op welk niveau bevind het probleem zich? Is het een vraag die wereld-weid niet bewantwoord is, of is het een individueel probleem?
