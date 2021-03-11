@@ -116,4 +116,8 @@ DOT Framework heeft 5 verschillende strategieën over de aanpak van onderzoek:
 ![Logo-workshop](https://user-images.githubusercontent.com/60918040/110812989-6533f880-8288-11eb-92e2-014256d1d29e.png)
 - Workshop: Je gaat na wat je mogelijkheden zijn door middel van prototyping (POC), design en eventueel tutorials volgen. Je doet dit om inzicht te krijgen in de mogelijkheden in context van jouw product.
 
-Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT Frakework Methods](http://ictresearchmethods.nl/Methods)
+Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT Framework Methods](http://ictresearchmethods.nl/Methods)
+
+Omdat dit project een klein POC is, waar vooral veel informatie ingewonnen word van bestaande bronnen, heb ik gekozen om de volgende strategieën en methoden te gebruiken voor het beantwoorden van de hoofd en deelvragen:
+
+![combi](https://user-images.githubusercontent.com/60918040/110813680-04f18680-8289-11eb-8a8d-8dced7a2ccb5.png)
