@@ -6,7 +6,7 @@ Dit is mijn repository relevant voor mijn POC (Proof-of-concept) voor het maken 
 
 - DOT Framework
 - Wat, Waarom, Hoe?
-- Aanpak van dit onderzoek
+- Gekozen strategieën en methoden voor dit onderzoek
 
 # DOT Framework
 
@@ -118,7 +118,7 @@ Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT 
 
 ---
 
-# Gekozen aanpak van dit onderzoek
+# Gekozen strategieën en methoden voor dit onderzoek
 
 Omdat dit project een klein POC is, waar vooral veel informatie ingewonnen word van bestaande bronnen, heb ik gekozen om de volgende strategieën en methoden te gebruiken voor het beantwoorden van de hoofd en deelvragen:
 
