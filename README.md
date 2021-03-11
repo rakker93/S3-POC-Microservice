@@ -4,9 +4,9 @@ Dit is mijn repository relevant voor mijn POC (Proof-of-concept) voor het maken 
 
 # Table of Content
 
-- Test
-- Test2
-- Test3
+- DOT Framework
+- Wat, Waarom, Hoe?
+- 
 
 # DOT Framework
 
@@ -117,6 +117,8 @@ DOT Framework heeft 5 verschillende strategieën over de aanpak van onderzoek:
 Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT Framework Methods](http://ictresearchmethods.nl/Methods)
 
 ---
+
+# Gekozen aanpak van dit onderzoek
 
 Omdat dit project een klein POC is, waar vooral veel informatie ingewonnen word van bestaande bronnen, heb ik gekozen om de volgende strategieën en methoden te gebruiken voor het beantwoorden van de hoofd en deelvragen:
 
