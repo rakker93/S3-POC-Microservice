@@ -81,13 +81,13 @@ Informatiebronnen:
 Ik gebruik .NET voor het maken van mijn microservices, dus ik kan de Microsoft documentatie gebruiken. Ook heeft Microsoft verschillende tutorials voor het maken van een basis microservice. Om een breder perspectief te krijgen gebruik ik youtube en eventueel stackoverflow om extra informatie in te winnen. Microsoft is in dit geval mijn 'source of truth'. Wanneer er bij een andere bron over nieuwe concepten word gesproken, dan verifieer ik dit door het ook op te zoeken in de Microsoft documentatie of een Microsoft gerelateerd artikel. Een kleine zoekopdracht heeft de volgende bronnen opgeleverd:
 
 1. Documentatie
-   [Microsoft - .NET REST API](https://dotnet.microsoft.com/apps/aspnet/apis)
-   [Microsoft - Example Repository Pattern](https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
+   [Microsoft - .NET REST API](https://dotnet.microsoft.com/apps/aspnet/apis) |
+   [Microsoft - Example Repository Pattern](https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application) |
    [C-Sharp Corner - Getting started with the Repository Pattern](https://www.c-sharpcorner.com/UploadFile/b1df45/getting-started-with-repository-pattern-using-C-Sharp/)
 
 2. Video
-   [Microsoft - Your first Microsoft](https://dotnet.microsoft.com/learn/aspnet/microservice-tutorial/intro)
-   [Microsoft - Beginner's Series to Web API's](https://www.youtube.com/watch?v=h0KG8OKKgKs&list=PLdo4fOcmZ0oVjOKgzsWqdFVvzGL2_d72v)
+   [Microsoft - Your first Microsoft](https://dotnet.microsoft.com/learn/aspnet/microservice-tutorial/intro) |
+   [Microsoft - Beginner's Series to Web API's](https://www.youtube.com/watch?v=h0KG8OKKgKs&list=PLdo4fOcmZ0oVjOKgzsWqdFVvzGL2_d72v) |
    [Les Jackson / Youtube - .NET Rest API](https://www.youtube.com/watch?v=fmvcAzHpsk8)
 
 3. Discussions (forum)
