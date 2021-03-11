@@ -6,7 +6,7 @@ Dit is mijn repository relevant voor mijn POC (Proof-of-concept) voor het maken 
 
 - DOT Framework
 - Wat, Waarom, Hoe?
-- 
+- Aanpak van dit onderzoek
 
 # DOT Framework
 
