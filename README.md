@@ -55,7 +55,7 @@ Microservices is een architectuur waar een applicatie gestructureerd word door m
 | Meer flexibel in wijzigingen code                                          |                                                                             |
 | Makkelijker te managen voor teams                                          |                                                                             |
 
-Probleemverkenning:
+**Probleemverkenning:**
 
 Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoofdvraag opgesplitst in kleinere vragen:
 
