@@ -1,5 +1,3 @@
-# POC Microservice
-
 # Introductie
 
 Dit is mijn repository relevant voor mijn POC (Proof-of-concept) voor het maken van een microservice. De bedoeling van dit project is om een beter beeld te krijgen hoe je een microservice maakt met .NET. Ook het automatiseren van builds en tests behoort tot deze POC. De informatie die voor het behalen van dit doel word gebruikt, zal in een onderzoeks-document verwerkt worden. Voor dit onderzoek word een bepaalde methodiek gebruikt, genaamd DOT Framework.
@@ -10,9 +8,7 @@ Dit is mijn repository relevant voor mijn POC (Proof-of-concept) voor het maken 
 - Test2
 - Test3
 
----
-
-## DOT Framework
+# DOT Framework
 
 ![dotframework](https://user-images.githubusercontent.com/60918040/110812513-f6569f80-8287-11eb-82c8-2236eff7ad06.jpg)
 
@@ -20,7 +16,7 @@ DOT Framework (Design Oriented Triangulation Framework) helpt bij het uitvoeren 
 
 Source: [DOT Framework](http://ictresearchmethods.nl/The_DOT_Framework)
 
-## Wat, Waarom, Hoe?
+# Wat, Waarom, Hoe?
 
 DOT Framework bestaat uit 3 verschillende niveau's die moeten helpen met de structuur van dit onderzoek. Hierin worden de 'Wat' 'Waarom' en 'Hoe' in beschreven.
 
@@ -29,6 +25,8 @@ DOT Framework bestaat uit 3 verschillende niveau's die moeten helpen met de stru
 In mijn persoonlijk project word een microservice architectuur gebruikt. In deze architectuur worden alle groten taken in de back-end verdeelt over zogenoemde services. Elke service heeft zijn eigen verantwoordelijkheid en mag maar een specifieke taak uitvoeren. Microservices zijn een complex onderwerp en er moet rekening gehouden worden met veel verschillende concepten. Hier is een algemene onderzoeksvraag uit ontstaan waarop het onderzoek is gebaseerd:
 
 **Hoe maak ik een microservice die gebruik maakt van MongoDB als data-store?**
+
+---
 
 ### Waarom (de reden van het onderzoek)
 
@@ -95,7 +93,7 @@ Ik gebruik .NET voor het maken van mijn microservices, dus ik kan de Microsoft d
 3. Discussions (forum)
    [StackOverflow - Repository Pattern](https://stackoverflow.com/questions/11985736/repository-pattern-step-by-step-explanation)
 
-- Probleemverkenning: Ga na wat de complexiteit van het probleem / de vraag is, en bestaat het uit meerdere vragen? Is het een nieuwe vraag, of is er al informatie beschikbaar bijvoorbeeld op internet? Op welk niveau bevind het probleem zich? Is het een vraag die wereld-weid niet bewantwoord is, of is het een individueel probleem?
+---
 
 ### Hoe (onderzoek strategieën en methoden)
 
