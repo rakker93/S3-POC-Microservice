@@ -72,11 +72,11 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 
 Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. De vragen die ik hier stel zullen niet allemaal relevant voor een minimale POC, maar zijn wel onderwerpen die goed samengaan bij het maken van een service. Deelvragen kunnen ook uit kleinere vragen bestaan, die ik beschrijf in een appart .md document.
 
-Probleem-niveau:
+**Probleem-niveau:**
 
 Het probleem-niveau ligt op het individu. Alle informatie die ik nodig heb voor het maken van een service met .NET is vindbaar op het internet.
 
-Informatiebronnen:
+**Bronnen:**
 
 Ik gebruik .NET voor het maken van mijn microservices, dus ik kan de Microsoft documentatie gebruiken. Ook heeft Microsoft verschillende tutorials voor het maken van een basis microservice. Om een breder perspectief te krijgen gebruik ik youtube en eventueel stackoverflow om extra informatie in te winnen. Microsoft is in dit geval mijn 'source of truth'. Wanneer er bij een andere bron over nieuwe concepten word gesproken, dan verifieer ik dit door het ook op te zoeken in de Microsoft documentatie of een Microsoft gerelateerd artikel. Een kleine zoekopdracht heeft de volgende bronnen opgeleverd:
 
