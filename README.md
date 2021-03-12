@@ -60,8 +60,7 @@ Microservices is een architectuur waar een applicatie gestructureerd word door m
 Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoofdvraag opgesplitst in kleinere vragen:
 
 - Hoe implementeer ik asynchronous code in mijn microservice?
-- Hoe communiceer ik met MongoDB in een .NET applicatie?
-- Hoe zet ik een MongoDB server op?
+- Hoe zet ik een MongoDB server op die communiceert met een .NET applicatie?
 - Hoe gebruik ik dependency injection?
 - Hoe documenteer ik mijn microservice endpoints?
 - Hoe test ik mijn microservice?
@@ -100,18 +99,23 @@ Ik gebruik .NET voor het maken van mijn microservices, dus ik kan de Microsoft d
 DOT Framework heeft 5 verschillende strategieën over de aanpak van onderzoek:
 
 ![library](https://user-images.githubusercontent.com/60918040/110812993-65cc8f00-8288-11eb-82ee-d0a44300ec30.png)
+
 - Bieb: Onderzoek naar wat al bestaat of al ooit gedaan is. Je gaat na welke theorieen er zijn over je onderwerp die in de context van je eigen project passen. Je zoekt informatie op of gebruikt bijvoorbeeld documentatie die door andere mensen geschreven is.
 
 ![field](https://user-images.githubusercontent.com/60918040/110813000-66652580-8288-11eb-925d-f92d6b1b4894.png)
+
 - Veld: Je gebruikt een veld-strategie om een beter inzicht te krijgen wat de eindgebruikers van jouw product verwachten en wat ze hier mee willen bereiken, hoe ze het gebruiken etc.
 
 ![lab](https://user-images.githubusercontent.com/60918040/110812997-66652580-8288-11eb-9f50-14c7b60e94b1.png)
+
 - Lab: Test je product door gebruik te maken van verschillende test methodieken die aangegeven worden in de lab strategie. Security, System, Unit testen maar ook statistische testen zijn allemaal methoden die je kunt gebruiken hiervoor.
 
 ![showroom](https://user-images.githubusercontent.com/60918040/110812995-65cc8f00-8288-11eb-8d14-a1405531641e.png)
+
 - Showroom: Laat de "positie" van jouw product zien tegenover die van andere. Je kunt je product laten zien aan experts of beschrijven wat er anders is aan jouw product ten opzichte van andere.
 
 ![Logo-workshop](https://user-images.githubusercontent.com/60918040/110812989-6533f880-8288-11eb-92e2-014256d1d29e.png)
+
 - Workshop: Je gaat na wat je mogelijkheden zijn door middel van prototyping (POC), design en eventueel tutorials volgen. Je doet dit om inzicht te krijgen in de mogelijkheden in context van jouw product.
 
 Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT Framework Methods](http://ictresearchmethods.nl/Methods)
