@@ -65,8 +65,6 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 - Hoe documenteer ik mijn microservice endpoints?
 - Hoe test ik mijn microservice?
 - Hoe dockerize ik mijn microservice?
-- Hoe kan ik error-handling op een gebruiksvriendelijke manier toepassen?
-- Hoe kan ik gebruik maken van een 'mapper' voor het automatiseren van het mappen naar / van DTO's?
 - Hoe implementeer ik de repository pattern in mijn project?
 
 Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. De vragen die ik hier stel zullen niet allemaal relevant voor een minimale POC, maar zijn wel onderwerpen die goed samengaan bij het maken van een service. Deelvragen kunnen ook uit kleinere vragen bestaan, die ik beschrijf in een appart .md document.
