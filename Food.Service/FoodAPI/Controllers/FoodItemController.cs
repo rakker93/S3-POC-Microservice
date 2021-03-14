@@ -1,15 +1,15 @@
+using FoodAPI.Extensions;
+using FoodAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodAPI.Controllers
 {
     [ApiController]
     [Route("/fooditems")]
-    public class FoodController : ControllerBase
+    public class FoodItemController : ControllerBase
     {
-        public FoodController()
+        public FoodItemController()
         {
-
         }
-
     }
 }
