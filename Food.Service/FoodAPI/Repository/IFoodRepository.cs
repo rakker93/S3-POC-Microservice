@@ -20,12 +20,12 @@ namespace FoodAPI.Repository
         /// <summary>
         /// Gets a FoodItem from the database by id asynchronously.
         /// </summary>
-        Task<FoodItem> GetAsync(Guid id);
+        Task<FoodItem> GetByIdAsync(Guid? id);
 
         /// <summary>
         /// Removes a FoodItem from the database by id asynchronously.
         /// </summary>
-        Task RemoveAsync(Guid id);
+        Task RemoveAsync(Guid? id);
 
         /// <summary>
         /// Updates a FoodItem in the database asynchronously.

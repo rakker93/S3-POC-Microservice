@@ -4,7 +4,7 @@
 
 1. Wat is MongoDB?
 2. Nieuwe Mongo database starten in een Docker container
-3. MongoDB Driver integreren met .NET
+3. MongoDB Driver met .NET
 
 ### Wat is MongoDB?
 
@@ -68,7 +68,7 @@ Om de 2 containers tegelijk te starten gebruik het commando: `docker-compose -f 
 
 Via de browser is het nu mogelijk om via MongoExpress te communiceren met deze database. Het is mogelijk om handmatig een database aan te maken, maar de Mongo client voor .NET zal er zelf een maken wanneer er geen aanwezig is bij het uitvoeren van code. De standaard URL voor het maken van een connectie naar deze database is `mongodb://localhost:27017` met de standaard poort.
 
-### MongoDB Driver integreren met .NET
+### MongoDB Driver met .NET
 
 1. Zorg dat de Mongo client geïnstalleerd is.
 

@@ -22,12 +22,19 @@ namespace FoodAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                // At runtime ASPNETCORE wont remove the "Async" keyword from async methods.
+                // Otherwises causes problems passing in the "actionName" for a method because it wont be the same.
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodAPI", Version = "v1" });
             });
 
+            // Register repository for Dependency injection
             services.AddSingleton<IFoodRepository, FoodRepository>();
         }
 
