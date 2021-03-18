@@ -119,8 +119,9 @@ Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT 
 
 ---
 
-# Gekozen strategieën en methoden voor dit onderzoek
+# Gekozen strategieën
 
 Omdat dit project een klein POC is, waar vooral veel informatie ingewonnen word van bestaande bronnen, heb ik gekozen om de volgende strategieën en methoden te gebruiken voor het beantwoorden van de hoofd en deelvragen:
 
-![combi](https://user-images.githubusercontent.com/60918040/110813680-04f18680-8289-11eb-8a8d-8dced7a2ccb5.png)
+![combi](https://user-images.githubusercontent.com/60918040/111648413-9d48b780-8803-11eb-9dd0-bce65304c7d5.png)
+
