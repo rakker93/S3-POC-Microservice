@@ -1,13 +1,5 @@
 # Deelvraag: Hoe zet ik een MongoDB server op die communiceert met een .NET applicatie?
 
-# Table of Content
-
-1. Wat is MongoDB?
-2. Nieuwe Mongo database starten in een Docker container
-3. MongoDB Driver met .NET
-
----
-
 ### Wat is MongoDB?
 
 MongoDB is een open-source 'document' database die makkelijk schaalbaar, en flexibel is. Het is makkelijker te gebruiken dan een standaard relationele database, maar ook geschikt voor complexere scenario's. MongoDB ondersteunt verschillende programmeer-talen om te kunnen communiceren met een database (clients). In het geval van .NET bestaat hier een NuGet package voor, namelijk: `MongoDB.Driver`
