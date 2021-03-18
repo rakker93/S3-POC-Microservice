@@ -26,3 +26,21 @@ Zoals in de afbeelding hierboven zal een class afhankelijk zijn van een interfac
 ### Hoe word een Dependency aangemaakt?
 
 Omdat een class niet direct een instantie van de dependency kan aanmaken (hij kent alleen het contract/interface), maakt hij de instantie aan via een zogenoemde **Service Container**. De IServiceProvider interface is hier verantwoordelijk voor in ASP.NET. Je registreert je dependencies in deze container (normaal in de startup class onder services). Wanneer je een instantie nodig hebt van een dependency zal de ServiceProvider automatisch een instantie teruggeven die dan geïnjecteerd word.
+
+### Service Lifetime
+
+Om gebruik te maken van dependency injection moet je in de startup class de services registreren. Hier zijn 3 verschillende methoden voor, namelijk:
+
+```c#
+services.AddScoped<Interface, ImplementatieClass>();
+services.AddTransient<Interface, ImplementatieClass>();
+services.AddSingleton<Interface, Implementatieclass>();
+```
+
+Wanneer je de services op deze manier registreert, weet de API dat hij deze services moet gebruiken wanneer een controller een deze wil injecteren via dependency injection. Het verschil tussen de 3 methoden zit hem in de 'lifetime' van het object. Het voordeel hiervan is dat wanneer je een andere implementatie wil gebruiken, je maar een woord hoeft te vervangen.
+
+- AddScoped: Maakt een nieuwe instantie aan voor elke aanvraag die binnen komt.
+- AddTransient: Maakt een nieuwe instantie aan voor elke controller en service in dezelfde aanvraag die binnen komt.
+- AddSingleton: Maakt in totaal maar een nieuwe instantie die voor elke aanvraag gebruikt word.
+
+
