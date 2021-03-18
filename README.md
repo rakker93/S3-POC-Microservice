@@ -62,7 +62,6 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 - Hoe implementeer ik asynchronous code in mijn microservice?
 - Hoe zet ik een MongoDB server op die communiceert met een .NET applicatie?
 - Hoe gebruik ik dependency injection?
-- Hoe documenteer ik mijn microservice endpoints?
 - Hoe test ik mijn microservice?
 - Hoe dockerize ik mijn microservice?
 - Hoe implementeer ik de repository pattern in mijn project?
