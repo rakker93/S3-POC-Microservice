@@ -81,8 +81,8 @@ Om de package via de command-line te installeren gebruik: `dotnet add package Mo
 
 Note: Naast het installeren van de Mongo .NET client en het starten van een Mongo container, zijn er nog wat voorbereidingen nodig in de .NET applicatie. In deze POC maak ik gebruik van 2 patterns, namelijk de Repository en Dependency Injection patterns. Voor meer informatie wil ik verwijzen naar mijn onderzoek:
 
-Repository pattern: [Research Repository Pattern]()
-Dependency Injection pattern: [Research Dependency Injection Pattern]()
+Repository pattern: [Research Repository Pattern](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/RepositoryPattern.md)
+Dependency Injection pattern: [Research Dependency Injection Pattern](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/DependencyInjection.md)
 
 2. Configureren Mongo in .NET
 
