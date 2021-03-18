@@ -59,12 +59,12 @@ Microservices is een architectuur waar een applicatie gestructureerd word door m
 
 Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoofdvraag opgesplitst in kleinere vragen:
 
-- Hoe implementeer ik asynchronous code in mijn microservice?
-- Hoe zet ik een MongoDB server op die communiceert met een .NET applicatie?
-- Hoe gebruik ik dependency injection?
+- [Hoe implementeer ik asynchronous code in mijn microservice?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/AsynchronousCode.md)
+- [Hoe zet ik een MongoDB server op die communiceert met een .NET applicatie?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/MongoDB.md)
+- [Hoe gebruik ik dependency injection?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/DependencyInjection.md)
 - Hoe test ik mijn microservice?
 - Hoe dockerize ik mijn microservice?
-- Hoe implementeer ik de repository pattern in mijn project?
+- [Hoe implementeer ik de repository pattern in mijn project?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/RepositoryPattern.md)
 
 Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. De vragen die ik hier stel zullen niet allemaal relevant voor een minimale POC, maar zijn wel onderwerpen die goed samengaan bij het maken van een service. Deelvragen kunnen ook uit kleinere vragen bestaan, die ik beschrijf in een appart .md document.
 
