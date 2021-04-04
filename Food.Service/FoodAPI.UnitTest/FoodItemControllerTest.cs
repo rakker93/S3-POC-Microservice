@@ -14,19 +14,20 @@ namespace FoodAPI.UnitTest
         public async Task GetAllAsync_Returns_AllRecipesPresent()
         {
             // Arrange
-            var fakeFoodItemCount = 1;
-            var fakeFoodItem = A.CollectionOfDummy<FoodItem>(fakeFoodItemCount).ToList();
+            const int fakeFoodItemCount = 1;
 
-            var foodRepository = A.Fake<IFoodRepository>();
-            var controller = new FoodItemController(foodRepository);
-            A.CallTo(() => foodRepository.GetAllAsync()).Returns(Task.FromResult(fakeFoodItem));
+            var fakeFoodItem = A.CollectionOfDummy<FoodItem>(fakeFoodItemCount).ToList();
+            var fakeFoodRepository = A.Fake<IFoodRepository>();
+            var foodItemController = new FoodItemController(fakeFoodRepository);
+
+            A.CallTo(() => fakeFoodRepository.GetAllAsync())
+                .Returns(Task.FromResult(fakeFoodItem));
 
             // Act
-            var returnedFoodItems = await controller.GetAllAsync();
-            var listItems = returnedFoodItems.ToList();
+            var returnedFoodItems = (await foodItemController.GetAllAsync()).ToList();
 
             // Assert
-            Assert.Equal(fakeFoodItemCount, listItems.Count);
+            Assert.Equal(fakeFoodItemCount, returnedFoodItems.Count);
         }
     }
 }
