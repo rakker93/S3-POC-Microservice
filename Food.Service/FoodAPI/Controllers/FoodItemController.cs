@@ -22,14 +22,14 @@ namespace FoodAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public async Task<IEnumerable<FoodItemDto>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<FoodItemDto>>> GetAllAsync()
         {
             var foodItems = (await _foodRepository
                 .GetAllAsync())
                 .Select(record => record
                 .ConvertToDto());
 
-            return foodItems;
+            return Ok(foodItems);
         }
 
         [HttpGet("{id}")]
@@ -39,7 +39,7 @@ namespace FoodAPI.Controllers
 
             if (foodItem == null) return NotFound();
 
-            return foodItem.ConvertToDto();
+            return Ok(foodItem.ConvertToDto());
         }
 
         [HttpPost]
