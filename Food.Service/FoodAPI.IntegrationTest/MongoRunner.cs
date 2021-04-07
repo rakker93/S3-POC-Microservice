@@ -6,22 +6,24 @@ using MongoDB.Driver;
 
 namespace FoodAPI.IntegrationTest
 {
-    public class MongoRunner : IDisposable
+    public class MongoRunner
     {
         internal static MongoDbRunner Runner;
         internal static IMongoCollection<FoodItem> Collection;
         public string RunnerConnectionString => Runner.ConnectionString;
 
+        public string RunnerStatus => Runner.State.ToString();
+
         internal static void SetupMongoRunner()
         {
-            Runner = MongoDbRunner.Start();
+            Runner = MongoDbRunner.Start(singleNodeReplSet: true);
 
             var mongoClient = new MongoClient(Runner.ConnectionString);
             var mongoDatabase = mongoClient.GetDatabase("IntegrationTest");
             Collection = mongoDatabase.GetCollection<FoodItem>("FoodItemCollection");
 
             var builder = new StringBuilder();
-            builder.AppendLine("=========================================");
+            builder.AppendLine("\n=========================================");
             builder.AppendLine("==============STATUS REPORT==============");
             builder.AppendLine("=========================================");
             builder.AppendLine("MongoClient:");
@@ -33,11 +35,6 @@ namespace FoodAPI.IntegrationTest
             builder.AppendLine($"- ConnectionString: {Runner.ConnectionString}");
 
             Console.WriteLine(builder.ToString());
-        }
-
-        public void Dispose()
-        {
-            Runner.Dispose();
         }
     }
 }

@@ -1,27 +1,60 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
-using FluentAssertions;
-using Newtonsoft.Json;
+using FoodAPI.Models;
+using MongoDB.Driver;
 using Xunit;
-using static FoodAPI.DTO.FoodItemDtos;
 
 namespace FoodAPI.IntegrationTest
 {
     public class FoodItemControllerTests : IntegrationTest
     {
-        [Fact]
-        public async Task MyFirstIntegrationTest_GetAllAsync()
+        public FoodItemControllerTests()
         {
-            var response = await _httpClient.GetAsync(ApiRoutes.FoodItems.GetAll);
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var foodItem = new FoodItem()
+            {
+                Id = Guid.NewGuid(),
+                Name = "TestFoodItem",
+                Description = "TestDescription"
+            };
 
-            var foodItems = (JsonConvert.DeserializeObject<IEnumerable<FoodItemDto>>(await response.Content.ReadAsStringAsync())).ToList();
-            foodItems.Should().HaveCount(1);
+            Console.WriteLine($"\nInserting FoodItem......");
 
-            var justTesting = false;
-            Assert.False(justTesting);
+            Collection.InsertOne(foodItem);
+
+            Console.WriteLine($"\nMONGODB DOCUMENT COUNT {Collection.CountDocuments(FilterDefinition<FoodItem>.Empty)}");
+
+            var item = Collection.Find(FilterDefinition<FoodItem>.Empty).First();
+            Console.WriteLine($"\n Food Item From Database: {item.Id} - {item.Name} - {item.Description}");
+        }
+
+        [Fact]
+        public async Task MyFirstIntegrationTest_HelloFromEndpoint()
+        {
+            var expectedFoodName = "DummyFoodItem";
+            var expectedFoodDesc = "This Dummy is deserialized from JSON";
+            FoodItem result = null;
+
+            try
+            {
+                // Get the JSON from the response
+                result = await _httpClient.GetFromJsonAsync<FoodItem>(ApiRoutes.FoodItems.TestResponse);
+
+                // Cleanup
+                Runner.Dispose();
+                _httpClient.Dispose();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"Exception thrown when executing test MyFirstIntegrationTest_HelloFromEndpoint(): {exception.Message}");
+            }
+
+            Assert.NotNull(result);
+            Assert.IsType<FoodItem>(result);
+            Assert.Equal(result.Name, expectedFoodName);
+            Assert.Equal(result.Description, expectedFoodDesc);
         }
     }
 }

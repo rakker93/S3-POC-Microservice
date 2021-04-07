@@ -6,8 +6,8 @@ namespace FoodAPI.IntegrationTest
     {
         public static class FoodItems
         {
-            public const string GetAll = "/fooditems/getall";
-            public const string GetById = "/fooditems/{replaceThisForId}";
+            public const string TestResponse = "http://localhost:80/fooditems/hello";
+            public const string GetAll = "http://localhost:80/fooditems/getall";
         }
     }
 }

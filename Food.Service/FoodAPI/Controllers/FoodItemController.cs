@@ -21,6 +21,19 @@ namespace FoodAPI.Controllers
             this._foodRepository = foodRepository;
         }
 
+        [HttpGet("hello")]
+        public ActionResult<string> SayHello()
+        {
+            var foodItem = new FoodItem()
+            {
+                Id = Guid.NewGuid(),
+                Name = "DummyFoodItem",
+                Description = "This Dummy is deserialized from JSON"
+            };
+
+            return Ok(foodItem);
+        }
+
         [HttpGet("getall")]
         public async Task<ActionResult<IEnumerable<FoodItemDto>>> GetAllAsync()
         {

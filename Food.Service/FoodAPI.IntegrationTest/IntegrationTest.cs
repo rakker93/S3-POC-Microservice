@@ -21,15 +21,14 @@ namespace FoodAPI.IntegrationTest
             var appFactory = new WebApplicationFactory<Startup>();
             var appConfiguration = appFactory.Services.GetRequiredService<IConfiguration>();
 
+            // Change conncection string to the one of the Runner
             appConfiguration.GetSection("ConnectionStrings")["MongoConnection"] = Runner.ConnectionString;
 
             // Create the http client that will call the testserver API
             _httpClient = appFactory.CreateClient();
-            _httpClient.BaseAddress = new UriBuilder()
-            {
-                Host = "localhost",
-                Port = 5001
-            }.Uri;
+
+            Console.WriteLine($"\nCLIENT BASE ADDRESS: {_httpClient.BaseAddress.Host} + {_httpClient.BaseAddress.Port}");
+            Console.WriteLine($"SERVER BASE ADDRESS: {appFactory.Server.BaseAddress}");
         }
     }
 }
