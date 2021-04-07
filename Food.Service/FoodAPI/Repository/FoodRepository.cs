@@ -5,34 +5,19 @@ using System.Threading.Tasks;
 using FoodAPI.Models;
 using MongoDB.Driver;
 using Microsoft.Extensions.Configuration;
-using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson;
+using FoodAPI.Services;
 
 namespace FoodAPI.Repository
 {
     public class FoodRepository : IFoodRepository
     {
-        private readonly IMongoCollection<FoodItem> foodItemCollection;
-        private readonly IConfiguration _configuration;
+        private readonly MongoClientService _mongoClient;
+        private readonly IMongoCollection<FoodItem> _collection;
 
-        public FoodRepository(IConfiguration configuration)
+        public FoodRepository(MongoClientService mongoClient)
         {
-            this._configuration = configuration;
-
-            try
-            {
-                // TODO: Simplify code and use Dependency Injection to get the Mongo Instance instead.
-                BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-
-                var mongoClient = new MongoClient(_configuration.GetConnectionString("MongoConnection"));
-                var mongoDb = mongoClient.GetDatabase(_configuration.GetSection("DatabaseSettings")["MongoDatabase"]);
-                foodItemCollection = mongoDb.GetCollection<FoodItem>(_configuration.GetSection("DatabaseSettings")["MongoCollection"]);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine($"Problem connecting or initializing MongoClient instance: {exception.Message}");
-            }
+            _mongoClient = mongoClient;
+            _collection = _mongoClient.CreateNewCollection<FoodItem>("FoodItems");
         }
 
         public async Task CreateAsync(FoodItem foodItem)
@@ -41,7 +26,7 @@ namespace FoodAPI.Repository
 
             try
             {
-                await foodItemCollection.InsertOneAsync(foodItem);
+                await _collection.InsertOneAsync(foodItem);
             }
             catch (Exception exception)
             {
@@ -53,7 +38,7 @@ namespace FoodAPI.Repository
         {
             try
             {
-                return await foodItemCollection
+                return await _collection
                     .Find(FilterDefinition<FoodItem>.Empty)
                     .ToListAsync();
             }
@@ -72,7 +57,7 @@ namespace FoodAPI.Repository
             {
                 var filter = Builders<FoodItem>.Filter.Eq(item => item.Id, id);
 
-                return await foodItemCollection
+                return await _collection
                     .Find(filter)
                     .FirstOrDefaultAsync();
             }
@@ -91,7 +76,7 @@ namespace FoodAPI.Repository
             try
             {
                 var filter = Builders<FoodItem>.Filter.Eq(item => item.Id, id);
-                await foodItemCollection.DeleteOneAsync(filter);
+                await _collection.DeleteOneAsync(filter);
             }
             catch (Exception exception)
             {
@@ -108,7 +93,7 @@ namespace FoodAPI.Repository
                 var filter = Builders<FoodItem>.Filter.Eq(item => item.Id, foodItem.Id);
 
                 // Note: Upsert will create a new item if it cant find an item to update.
-                await foodItemCollection.ReplaceOneAsync(filter, foodItem, new ReplaceOptions { IsUpsert = true });
+                await _collection.ReplaceOneAsync(filter, foodItem, new ReplaceOptions { IsUpsert = true });
             }
             catch (Exception exception)
             {

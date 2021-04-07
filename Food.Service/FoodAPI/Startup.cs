@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using FoodAPI.Extensions;
+using FoodAPI.Models;
 using FoodAPI.Repository;
+using FoodAPI.Services;
+using FoodAPI.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +38,13 @@ namespace FoodAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodAPI", Version = "v1" });
             });
 
-            // Register repository for Dependency injection
+            services.AddMongoServiceClient(new MongoSettingsProvider()
+            {
+                ConnectionString = Configuration.GetConnectionString("MongoConnection"),
+                DatabaseName = Configuration.GetSection("DatabaseSettings")["MongoDatabase"],
+                CollectionName = Configuration.GetSection("DatabaseSettings")["MongoCollection"]
+            });
+
             services.AddSingleton<IFoodRepository, FoodRepository>();
         }
 
