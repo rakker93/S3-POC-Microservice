@@ -20,14 +20,7 @@ namespace FoodAPI.IntegrationTest
                 Description = "TestDescription"
             };
 
-            Console.WriteLine($"\nInserting FoodItem......");
-
             Collection.InsertOne(foodItem);
-
-            Console.WriteLine($"\nMONGODB DOCUMENT COUNT {Collection.CountDocuments(FilterDefinition<FoodItem>.Empty)}");
-
-            var item = Collection.Find(FilterDefinition<FoodItem>.Empty).First();
-            Console.WriteLine($"\n Food Item From Database: {item.Id} - {item.Name} - {item.Description}");
         }
 
         [Fact]
