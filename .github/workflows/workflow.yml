@@ -51,8 +51,8 @@ jobs:
         run: dotnet restore ${{ env.SOLUTION_PATH }}
           
       - name: Build Solution
-        run: dotnet build --no-restore ${{ SOLUTION_PATH }}
+        run: dotnet build --no-restore ${{ env.SOLUTION_PATH }}
 
       # -Runs both unit and integration tests as they fall under one solution
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal ${{ SOLUTION_PATH }}
+        run: dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}
