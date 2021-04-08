@@ -3,46 +3,15 @@ name: CI-CD-FoodAPI
 # Event on which the workflow triggers
 on:
   workflow_dispatch:
-    branches: main
 
 # Variabelen die toegankelijk zijn voor alle jobs
 env:
   SOLUTION_PATH: ./Food.Service/FoodAPI.sln
     
 jobs:
-  #1. Static Code Check
-  codeql-analysis:
-    runs-on: ubuntu-latest
-    strategy:
-      # -GitHub cancelt alle in-progress jobs if matrix in job faalt-
-      fail-fast: true
-      matrix:
-        language: ['csharp']
-
-    # -Stappen voor CodeQL-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Init CodeQL
-        uses: github/codeql-action/init@v1
-        # -Gebruikt de bovenstaande matrix om taal te selecteren voor checking-
-        with:
-          languages: ${{ matrix.language }}
-
-        # -Build automatisch het project voor CodeQL check
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
-
-        # -Start de CodeQL analyse
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-
   #2. Unit & Integration Testing
   unit-integration-testing:
     runs-on: ubuntu-latest
-    # Mag alleen beginnen met unit tests als CodeQL positief is
-    needs: codeql-analysis
 
     # -Stappen voor Unit-Testing
     steps:
