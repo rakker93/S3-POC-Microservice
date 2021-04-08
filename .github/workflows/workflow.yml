@@ -12,7 +12,6 @@ env:
 jobs:
   #1. Static Code Check
   codeql-analysis:
-    name: CodeQL Check
     runs-on: ubuntu-latest
     strategy:
       # -GitHub cancelt alle in-progress jobs if matrix in job faalt-
@@ -41,7 +40,6 @@ jobs:
 
   #2. Unit & Integration Testing
   unit-integration-testing:
-    name: Unit-Integration-Testing
     runs-on: ubuntu-latest
     # Mag alleen beginnen met unit tests als CodeQL positief is
     needs: codeql-analysis
