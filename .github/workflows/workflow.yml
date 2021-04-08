@@ -9,27 +9,30 @@ env:
   SOLUTION_PATH: ./Food.Service/FoodAPI.sln
     
 jobs:
-  #2. Unit & Integration Testing
-  unit-integration-testing:
+ #1. Static Code Check
+  codeql-analysis:
     runs-on: ubuntu-latest
+    strategy:
+      # -GitHub cancelt alle in-progress jobs if matrix in job faalt-
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
 
-    # -Stappen voor Unit-Testing
+    # -Stappen voor CodeQL-
     steps:
       - name: Checkout Repository
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
-      # -Zet environment op voor een recente versie van .NET 5
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+      - name: Init CodeQL
+        uses: github/codeql-action/init@v1
+        # -Gebruikt de bovenstaande matrix om taal te selecteren voor checking-
         with:
-          dotnet-version: 5.0.x
+          languages: ${{ matrix.language }}
 
-      - name: Restore Dependencies
-        run: dotnet restore ${{ SOLUTION_PATH }}
+        # -Build automatisch het project voor CodeQL check
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
 
-      - name: Build Solution
-        run: dotnet build --no-restore ${{ SOLUTION_PATH }}
-
-      # -Runs both unit and integration tests as they fall under one solution
-      - name: Run tests
-        run: dotnet test --no-build --verbosity normal ${{ SOLUTION_PATH }}
+        # -Start de CodeQL analyse
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
