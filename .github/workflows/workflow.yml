@@ -1,4 +1,4 @@
-name: CI To Docker Hub
+name: CI-CD-FoodAPI
 
 # Event on which the workflow triggers
 on:
@@ -7,7 +7,7 @@ on:
 
 # Variabelen die toegankelijk zijn voor alle jobs
 env:
-  SOLUTION_PATH: somelinkhere
+  SOLUTION_PATH: ./Food.Service/FoodAPI.sln
     
 jobs:
   #1. Static Code Check
