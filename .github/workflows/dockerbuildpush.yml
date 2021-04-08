@@ -1,35 +1,68 @@
 name: CI To Docker Hub
 
+# Event on which the workflow triggers
 on:
   workflow_dispatch:
     branches: main
+
+# Variabelen die toegankelijk zijn voor alle jobs
+env:
+  SOLUTION_PATH: somelinkhere
     
 jobs:
-  build:
+  #1. Static Code Check
+  codeql-analysis:
+    name: CodeQL Check
     runs-on: ubuntu-latest
+    strategy:
+      # -GitHub cancelt alle in-progress jobs if matrix in job faalt-
+      fail-fast: true
+      matrix:
+        language: ['csharp']
+
+    # -Stappen voor CodeQL-
     steps:
-    
-      - name: Check Out Repository 
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
+      - name: Init CodeQL
+        uses: github/codeql-action/init@v1
+        # -Gebruikt de bovenstaande matrix om taal te selecteren voor checking-
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          languages: ${{ matrix.language }}
 
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
+        # -Build automatisch het project voor CodeQL check
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
 
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
+        # -Start de CodeQL analyse
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+
+  #2. Unit & Integration Testing
+  unit-integration-testing:
+    name: Unit-Integration-Testing
+    runs-on: ubuntu-latest
+    # Mag alleen beginnen met unit tests als CodeQL positief is
+    needs: codeql-analysis
+
+    # -Stappen voor Unit-Testing
+    steps:
+      - name: Checkout Repository
+      - uses: actions/checkout@v2
+
+      # -Zet environment op voor een recente versie van .NET 5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
         with:
-          context: ./
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+          dotnet-version: 5.0.x
 
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Restore Dependencies
+        run: dotnet restore ${{ SOLUTION_PATH }}
+
+      - name: Build Solution
+        run: dotnet build --no-restore ${{ SOLUTION_PATH }}
+
+      # -Runs both unit and integration tests as they fall under one solution
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal ${{ SOLUTION_PATH }}
