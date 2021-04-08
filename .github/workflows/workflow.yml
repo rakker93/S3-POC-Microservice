@@ -14,11 +14,11 @@ jobs:
     name: static-code checking
     runs-on: ubuntu-latest
     strategy:
-      # -GitHub cancelt alle in-progress jobs if matrix in job faalt-
+      # -GitHub cancelt alle in-progress jobs als matrix in job faalt-
       fail-fast: true
       matrix:
         language: [ 'csharp' ]
-    # -Stappen voor CodeQL-
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -29,18 +29,18 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-        # -Build automatisch het project voor CodeQL check
       - name: Autobuild
         uses: github/codeql-action/autobuild@v1
 
-        # -Start de CodeQL analyse
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
-        
-  testing:
+
+        #2. Testing
+  unit-and-integration-tests:
     name: testing solution
     runs-on: ubuntu-latest
     needs: codeql-analysis
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -56,6 +56,5 @@ jobs:
       - name: Build Solution
         run: dotnet build --no-restore ${{ env.SOLUTION_PATH }}
 
-      # -Runs both unit and integration tests as they fall under one solution
       - name: Run tests
         run: dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}

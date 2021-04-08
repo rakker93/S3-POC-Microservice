@@ -19,7 +19,7 @@ public ItemsController(IFoodRepository foodRepository)
 
 ![DependencyInjection](https://user-images.githubusercontent.com/60918040/111621644-834dab80-87e8-11eb-9573-cc87e959ee28.png)
 
-Dependency Injection gaat samen met de Dependency Inversion Principle. Dit principe zegt dat code afhankelijk moet zijn van instructies in plaats van implementaties. In C# termen kun je dit zien als classes en interfaces.
+Dependency Injection gaat samen met de Dependency Inversion Principle. Dit principe zegt dat code afhankelijk moet zijn van instructies in plaats van implementaties. In C# termen kun je dit zien als interfaces en classes.
 
 Zoals in de afbeelding hierboven zal een class afhankelijk zijn van een interface in plaats van een directe implementatie.
 
@@ -32,15 +32,13 @@ Omdat een class niet direct een instantie van de dependency kan aanmaken (hij ke
 Om gebruik te maken van dependency injection moet je in de startup class de services registreren. Hier zijn 3 verschillende methoden voor, namelijk:
 
 ```c#
-services.AddScoped<Interface, ImplementatieClass>();
-services.AddTransient<Interface, ImplementatieClass>();
-services.AddSingleton<Interface, Implementatieclass>();
+services.AddScoped<InterfaceContract, ImplementatieClass>();
+services.AddTransient<InterfaceContract, ImplementatieClass>();
+services.AddSingleton<InterfaceContract, Implementatieclass>();
 ```
 
-Wanneer je de services op deze manier registreert, weet de API dat hij deze services moet gebruiken wanneer een controller een deze wil injecteren via dependency injection. Het verschil tussen de 3 methoden zit hem in de 'lifetime' van het object. Het voordeel hiervan is dat wanneer je een andere implementatie wil gebruiken, je maar een woord hoeft te vervangen.
+Wanneer je de services op deze manier registreert, weet de API dat hij deze services moet gebruiken wanneer een controller een deze wil injecteren via dependency injection. Het verschil tussen de 3 methoden zit in de 'lifetime' van het object. Het voordeel hiervan is dat wanneer je een andere implementatie wil gebruiken, je maar een woord hoeft te veranderen.
 
 - AddScoped: Maakt een nieuwe instantie aan voor elke aanvraag die binnen komt.
-- AddTransient: Maakt een nieuwe instantie aan voor elke controller en service in dezelfde aanvraag die binnen komt.
+- AddTransient: Maakt een nieuwe instantie aan voor elke controller en service (in dezelfde aanvraag) die binnen komt.
 - AddSingleton: Maakt in totaal maar een nieuwe instantie die voor elke aanvraag gebruikt word.
-
-

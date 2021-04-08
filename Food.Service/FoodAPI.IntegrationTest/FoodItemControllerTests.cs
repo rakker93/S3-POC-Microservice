@@ -1,10 +1,7 @@
 using System;
-using System.Linq;
-using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using FoodAPI.Models;
-using MongoDB.Driver;
 using Xunit;
 
 namespace FoodAPI.IntegrationTest

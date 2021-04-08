@@ -66,7 +66,7 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 - Hoe dockerize ik mijn microservice?
 - [Hoe implementeer ik de repository pattern in mijn project?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/RepositoryPattern.md)
 
-Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. De vragen die ik hier stel zullen niet allemaal relevant voor een minimale POC, maar zijn wel onderwerpen die goed samengaan bij het maken van een service. Deelvragen kunnen ook uit kleinere vragen bestaan, die ik beschrijf in een appart .md document.
+Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. De vragen die ik hier stel zullen misschien niet allemaal relevant zijn voor een minimale POC, maar zijn wel onderwerpen die goed samengaan bij het maken van een service. Hoofdvragen bestaan gewoonlijk ook uit kleinere vragen. Deze zullen apart gedocumenteert worden in een markdown (.md) document.
 
 **Probleem-niveau:**
 
@@ -124,4 +124,3 @@ Voor de methoden die bij elke strategie hoort gebruik ik de volgende bron: [DOT 
 Omdat dit project een klein POC is, waar vooral veel informatie ingewonnen word van bestaande bronnen, heb ik gekozen om de volgende strategieën en methoden te gebruiken voor het beantwoorden van de hoofd en deelvragen:
 
 ![combi](https://user-images.githubusercontent.com/60918040/111648413-9d48b780-8803-11eb-9dd0-bce65304c7d5.png)
-
