@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>FoodAPI-e7673dc8-81dc-4281-89c9-d8b3e832e5ce</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
