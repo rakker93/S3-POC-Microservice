@@ -16,6 +16,5 @@ jobs:
         uses: docker/build-push-action@v2.4.0
         with:
           registry: docker.pkg.github.com
-          repository: ${{ github.repository }}/foodcontainer
           context: ${{ env.DOCKERFILE_PATH }}
           tags: latest, ${{ github.run_number }}
