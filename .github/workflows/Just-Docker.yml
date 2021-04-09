@@ -18,7 +18,7 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           dockerfile: ${{ env.DOCKERFILE_PATH }}
-          repository: rakker93/s3-poc-microservice
+          repository: rakker93/s3-poc-microservice/foodcontainer
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
