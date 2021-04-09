@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  SOLUTION_PATH: ./Food.Service/FoodAPI.sln
+  DOCKERFILE_PATH: ./Food.Service/FoodAPI/
     
 jobs:
   build-docker-container:
@@ -14,8 +14,8 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v1
         with:
+          dockerfile: ${{ env.DOCKERFILE_PATH }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: ${{ github.repository }}/foodcontainer
           tags: latest, ${{ github.run_number }}
