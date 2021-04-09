@@ -11,6 +11,9 @@ jobs:
     name: docker build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
       - name: Build and Push Docker image
         uses: docker/build-push-action@v1
         with:
