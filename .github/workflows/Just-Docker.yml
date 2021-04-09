@@ -5,7 +5,6 @@ on:
   
 env:
   SOLUTION_PATH: ./Food.Service/FoodAPI.sln
-  DOCKERFILE_PATH: ./Food.Service/FoodAPI
     
 jobs:
   build-docker-container:
@@ -19,5 +18,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/foodcontainer
-          context: ${{ env.DOCKERFILE_PATH }}
           tags: latest, ${{ github.run_number }}
