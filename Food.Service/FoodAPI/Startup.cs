@@ -26,17 +26,9 @@ namespace FoodAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers(options =>
-            {
-                // At runtime ASPNETCORE wont remove the "Async" keyword from async methods.
-                // Otherwises causes problems passing in the "actionName" for a method because it wont be the same.
-                options.SuppressAsyncSuffixInActionNames = false;
-            });
+            services.AddControllers(options => options.SuppressAsyncSuffixInActionNames = false);
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodAPI", Version = "v1" });
-            });
+            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodAPI", Version = "v1" }));
 
             services.AddMongoServiceClient(new MongoSettingsProvider()
             {
@@ -49,14 +41,14 @@ namespace FoodAPI
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            //     app.UseSwagger();
-            //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodAPI v1"));
-            // }
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodAPI v1"));
+            }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

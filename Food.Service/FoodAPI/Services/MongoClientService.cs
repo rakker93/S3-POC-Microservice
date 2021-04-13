@@ -19,9 +19,10 @@ namespace FoodAPI.Services
 
             try
             {
-                //BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+                BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 
                 _client = new MongoClient(_settings.ConnectionString);
+
                 _database = _client.GetDatabase(_settings.DatabaseName);
             }
             catch (Exception exception)

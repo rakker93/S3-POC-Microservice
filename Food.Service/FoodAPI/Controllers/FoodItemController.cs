@@ -21,8 +21,8 @@ namespace FoodAPI.Controllers
             this._foodRepository = foodRepository;
         }
 
-        [HttpGet("hello")]
-        public ActionResult<string> SayHello()
+        [HttpGet("integrationtest")]
+        public ActionResult<string> IntegrationTestEndpoint()
         {
             var foodItem = new FoodItem()
             {

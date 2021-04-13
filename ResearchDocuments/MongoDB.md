@@ -10,7 +10,7 @@ MongoDB slaat data op in document-bestanden die sterk op JSON lijkt. Attributes 
 
 ### Nieuwe Mongo database starten in een Docker container
 
-Voor het initialiseren van een nieuwe server gebruik ik de officiele MongoDB image. Met deze image kan ik via Docker een 'schone' instantie van MongoDB draaien zonder veel te configureren. Dit vereist wel dat docker geïnstalleerd is. In mijn geval gebruik ik voor deze POC Docker Desktop. Voor meer informatie over Docker heb ik het volgende document geschreven: [Research Docker]()
+Voor het initialiseren van een nieuwe server gebruik ik de officiele MongoDB image. Met deze image kan ik via Docker een 'schone' instantie van MongoDB draaien zonder veel te configureren. Dit vereist wel dat docker geïnstalleerd is. In mijn geval gebruik ik voor deze POC Docker Desktop.
 
 Met het volgende commando kun je een nieuwe MongoDB server starten:
 `docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo`
@@ -27,11 +27,11 @@ Met het volgende commando kun je een nieuwe MongoDB server starten:
 
 `mongo` De naam van de image die gebruikt word. Wanneer deze image zich niet bevind op de host machine zal deze gedownload worden van Docker Hub.
 
-Note: Gebruik `docker ps` om te verifiëren of de container gestart is.
+Note: Gebruik `docker ps -a` om te verifiëren of de container gestart is.
 
-Het is ook mogelijk om MongoExpress te gebruiken tijdens development. MongoExpress beschikt over een UI waar je de Mongo database in kan managen, en waar je documenten kan inzien. Het word niet geadviseerd om express te gebruiken in productie, omdat JavaScript injection mogelijk zou **kunnen** zijn. Voor deze POC maak ik hier wel gebruik van omdat het alleen voor onderzoek doeleinden is, en omdat het makkelijker is om te bevestigen dat bepaalde operaties in mijn code werken.
+Het is ook mogelijk om MongoExpress te gebruiken tijdens development. MongoExpress beschikt over een UI waar je de Mongo database in kan managen, en waar je documenten kan inzien. Het word niet geadviseerd om express te gebruiken in productie, omdat JavaScript injection mogelijk zou **kunnen** zijn. Voor deze POC maak ik hier wel gebruik van omdat het alleen voor onderzoek doeleinden is, en omdat het makkelijker is om te bevestigen dat bepaalde operaties in mijn code werken in combinatie met swagger voor de API.
 
-MongoExpress staat los van de Mongo database. Dit zijn twee aparte containers die met elkaar verbonden moeten worden. Commando's typen in Powershell kan onhandig zijn wanneer je meerdere containers tegelijk moet gebruiken. Om deze reden maak ik gebruik van docker-compose. Voor meer informatie over Docker verwijs ik naar mijn onderzoek: [Research Docker]()
+MongoExpress staat los van de Mongo database. Dit zijn twee aparte containers die met elkaar verbonden moeten worden. Commando's typen in Powershell kan onhandig zijn wanneer je meerdere containers tegelijk moet gebruiken. Om deze reden maak ik gebruik van docker-compose.
 
 ```yml
 version: "3.1"
@@ -59,28 +59,30 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
 ```
 
-Om de 2 containers tegelijk te starten gebruik het commando: `docker-compose -f configuratie.yml up`. De -f tag geeft aan dat docker compose een configuratie bestand moet gebruiken (configuratie.yml). Zonder specifiek configuratie bestand zal Docker zoeken naar een 'docker-compose.yml' bestand.
+Om de 2 containers tegelijk te starten gebruik het commando: `docker-compose -f configuratie.yml up`. De -f tag geeft aan dat docker compose een configuratie bestand moet gebruiken (configuratie.yml). Zonder specifiek configuratie bestand zal Docker zoeken naar een 'docker-compose.yml' bestand in de root folder waar het commando word gebruikt.
 
-Via de browser is het nu mogelijk om via MongoExpress te communiceren met deze database. Het is mogelijk om handmatig een database aan te maken, maar de Mongo client voor .NET zal er zelf een maken wanneer er geen aanwezig is bij het uitvoeren van code. De standaard URL voor het maken van een connectie naar deze database is `mongodb://localhost:27017` met de standaard poort.
+Via de browser is het nu mogelijk om via MongoExpress te communiceren met deze database. Het is mogelijk om handmatig een database aan te maken, maar de Mongo client voor .NET zal er zelf een maken wanneer er geen aanwezig is bij het uitvoeren van code. De standaard URL voor het maken van een connectie naar deze database is `mongodb://localhost:27017` met de standaard poort. Wanneer je een user en password gebruikt ziet de connection-string er zo uit `mongodb://username:password@localhost:27017`
 
 ---
 
 ### MongoDB Driver met .NET
 
-1. Zorg dat de Mongo client geïnstalleerd is.
+1. Zorg dat de MongoDB Driver package geïnstalleerd is.
 
 Om de package via de command-line te installeren gebruik: `dotnet add package MongoDB.Driver`
 
-Note: Naast het installeren van de Mongo .NET client en het starten van een Mongo container, zijn er nog wat voorbereidingen nodig in de .NET applicatie. In deze POC maak ik gebruik van 2 patterns, namelijk de Repository en Dependency Injection patterns. Voor meer informatie wil ik verwijzen naar mijn onderzoek:
+2. Configureren Mongo in .NET
+
+Naast het installeren van de Mongo .NET package en het starten van een Mongo container, zijn er nog wat voorbereidingen nodig in de .NET applicatie zelf. In deze POC maak ik gebruik van 2 patterns, namelijk de Repository en Dependency Injection patterns. Voor meer informatie over deze patterns wil ik verwijzen naar mijn onderzoek:
 
 Repository pattern: [Research Repository Pattern](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/RepositoryPattern.md)
 Dependency Injection pattern: [Research Dependency Injection Pattern](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/DependencyInjection.md)
 
-2. Configureren Mongo in .NET
+In deze POC heb ik de connection-string en database strings opgeslagen in `appsettings.json`. Houd er rekening mee dat deze informatie gevoelig is, en normaal opgeslagen word in een secret file of in een key-vault. Er is een extensie methode gemaakt voor `IServiceCollection` genaamd AddMongoServiceClient(). Deze methode word gebruikt in de startup file en gebruikt de instellingen van appsettings.json die door middel van `MongoSettingsProvider` worden meegegeven. MongoSettingsProvider word alleen gebruikt om de waarden van het appsettings.json bestand te mappen. Vervolgens worden deze gegevens weer doorgegeven in de extensie methode voor het aanmaken van een `MongoClientService` instantie. Dit is ook waar de service word geregistreerd als een singleton. Wanneer er om de MongoServiceClient word gevraagd, geeft de service provider deze instantie terug.
 
-vertel over database connectie client in repository en over extension method die je kan maken
+3. Mongo Client Service Class
 
-Normaal gesproken voeg je nieuwe services of dependencies toe in startup.cs met services.Add\*. Om in plaats van alle logic in de startup.cs class te schrijven, is het beter om een extension method te maken, zodat je met een simpele statement Mongo support kan toevoegen aan je applicatie. Een extension method voegt functionaliteit toe aan een class zonder de class zelf te wijzigen. Omdat we Mongo support willen toevoegen via de ConfigureService method die om een IServiceCollection interface vraagt, moeten we deze interface gebruiken in onze extension method om functionaliteit te kunnen toevoegen.
+Deze class is een wrapper class voor de MongoDB Driver library, die de MongoClient classes en functionaleit encapsuleert. Hier worden de instructies gegeven aan de Mongo database om de database zelf en de bijbehorende collections aan te maken. Het handige van MongoDB is dat wanneer Mongo geen database of collectie kan vinden, hij deze automatisch aanmaakt.
 
 ---
 

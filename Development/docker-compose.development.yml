@@ -1,9 +1,8 @@
-version: '3.1'
+version: "3.1"
 
 # De services of 'containers' die gestart worden met docker-compose
 services:
-
-# De mongo database met een standaard gebruikersnaam en wachtwoord
+  # De mongo database met een standaard gebruikersnaam en wachtwoord
   mongo:
     image: mongo
     restart: always
@@ -13,7 +12,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 
-# De mongo express UI die de mongo database in de andere container managed. Is bereikbaar via de browser op: localhost:8081
+  # De mongo express UI die de mongo database in de andere container managed. Is bereikbaar via de browser op: localhost:8081
   mongo-express:
     image: mongo-express
     restart: always
