@@ -62,7 +62,7 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 - [Hoe implementeer ik asynchronous code in mijn microservice?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/AsynchronousCode.md)
 - [Hoe zet ik een MongoDB server op die communiceert met een .NET applicatie?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/MongoDB.md)
 - [Hoe gebruik ik dependency injection?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/DependencyInjection.md)
-- Hoe test ik mijn microservice?
+- [Hoe test ik mijn microservice?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/Testing.md)
 - Hoe kan ik continous integration / delivery toepassen op mijn microservice?
 - Hoe dockerize ik mijn microservice?
 - [Hoe implementeer ik de repository pattern in mijn project?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/RepositoryPattern.md)
