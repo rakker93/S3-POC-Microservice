@@ -42,3 +42,8 @@ Wanneer je de services op deze manier registreert, weet de API dat hij deze serv
 - AddScoped: Maakt een nieuwe instantie aan voor elke aanvraag die binnen komt.
 - AddTransient: Maakt een nieuwe instantie aan voor elke controller en service (in dezelfde aanvraag) die binnen komt.
 - AddSingleton: Maakt in totaal maar een nieuwe instantie die voor elke aanvraag gebruikt word.
+
+### Bronnen
+
+- [Microsoft DI Tutorial](https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-usage)
+- [Kudvenkat DI Tutorial](https://www.youtube.com/watch?v=BPGtVpu81ek)

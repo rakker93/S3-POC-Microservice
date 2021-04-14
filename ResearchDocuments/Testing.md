@@ -169,5 +169,5 @@ De variable `result` van het type `FoodItem` zou nu hetzelfde object moeten beva
 
 ### Bronnen
 
-[FakeItEasy Website](https://fakeiteasy.github.io/)
-[Mongo2Go Git](https://github.com/Mongo2Go/Mongo2Go)
+- [FakeItEasy Website](https://fakeiteasy.github.io/)
+- [Mongo2Go Git](https://github.com/Mongo2Go/Mongo2Go)

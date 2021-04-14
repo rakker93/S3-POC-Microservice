@@ -31,3 +31,9 @@ public FoodItemController(IFoodRepository foodRepository)
 ```
 
 Elke keer wanneer er een methode aangeroepen word die in het contract staat (interface), weet .NET bij welke implementatie hij moet zijn en welke methoden aangeroepen moet worden. Wanneer ik van database zou willen veranderen, hoef ik alleen een andere implementatie mee tegeven aan de dependency injection container. De code in de controller hoeft niet te veranderen. De nieuwe implementatie class moet wel nog steeds aan het contract voldoen.
+
+### Bronnen
+
+- [Microsoft - Example Repository Pattern](https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
+- [C-Sharp Corner - Getting started with the Repository Pattern](https://www.c-sharpcorner.com/UploadFile/b1df45/getting-started-with-repository-pattern-using-C-Sharp/)
+- [StackOverflow - Repository Pattern](https://stackoverflow.com/questions/11985736/repository-pattern-step-by-step-explanation)

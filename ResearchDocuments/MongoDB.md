@@ -90,7 +90,7 @@ Deze class is een wrapper class voor de MongoDB Driver library, die de MongoClie
 
 Voor het onderzoek naar MongoDB heb ik de officiele documentatie gebruikt:
 
-[Documentation Mongo Container - Docker Hub](https://hub.docker.com/_/mongo)
-[Documentation Mongo - MongoDB with .NET](https://www.mongodb.com/blog/post/quick-start-c-sharp-and-mongodb-starting-and-setup)
-[Documentation Mongo - What is MongoDB](https://www.mongodb.com/what-is-mongodb)
-[Youtube Microsoft - Connecting API to a data-store](https://www.youtube.com/watch?v=jxlKfHGMG-g&list=PLdo4fOcmZ0oVjOKgzsWqdFVvzGL2_d72v&index=11)
+- [Documentation Mongo Container - Docker Hub](https://hub.docker.com/_/mongo)
+- [Documentation Mongo - MongoDB with .NET](https://www.mongodb.com/blog/post/quick-start-c-sharp-and-mongodb-starting-and-setup)
+- [Documentation Mongo - What is MongoDB](https://www.mongodb.com/what-is-mongodb)
+- [Youtube Microsoft - Connecting API to a data-store](https://www.youtube.com/watch?v=jxlKfHGMG-g&list=PLdo4fOcmZ0oVjOKgzsWqdFVvzGL2_d72v&index=11)
