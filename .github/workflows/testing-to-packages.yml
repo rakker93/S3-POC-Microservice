@@ -1,0 +1,25 @@
+name: Docker to GitPackage
+
+on:
+  workflow_dispatch:
+  
+env:
+  DOCKERFILE_PATH: ./Food.Service/FoodAPI/dockerfile
+    
+jobs:
+  build-docker-container:
+    name: docker build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v1
+        with:
+          dockerfile: ${{ env.DOCKERFILE_PATH }}
+          repository: rakker93/s3-poc-microservice/foodcontainer
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          tags: latest, ${{ github.run_number }}
