@@ -90,8 +90,67 @@ De code hierboven bestaat uit de eerste job die verantwoordelijk is voor de stat
 
 Zoals je onder 'steps' kan zien, word er onder `uses` een path gebruikt. Dit zijn de vooraf gedefineerde actions van GitHub. Dit heeft verder geen configuratie nodig. Voor meer informatie over deze actions kun je terecht bij de marketplace.
 
+```yaml
+unit-and-integration-tests:
+  name: testing solution
+  runs-on: ubuntu-latest
+  needs: codeql-analysis
+
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Restore Dependencies
+      run: dotnet restore ${{ env.SOLUTION_PATH }}
+
+    - name: Build Solution
+      run: dotnet build --no-restore ${{ env.SOLUTION_PATH }}
+
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}
+```
+
+De volgende job is het automatiseren van de unit en integration tests. Dit zijn twee aparte projecten die gedefineerd staan in de .sln project file. De actions spreken in principe voor zichzelf. .NET word opgezet voor de runner die de workflow gaat uitvoeren, de dependencies worden restored, en uiteindelijk zal hij gaan testen. Je kunt zien dat bij de commando's met 'dotnet' ik de environment variable gebruik die aan het begin is gedefineerd. Dit is de path van het .sln bestand.
+
+**Note:** De instructie `needs: codeql-analysis` betekend dat deze job alleen uitgevoerd word wanneer de code-analysis job succesvol is afgerond.
+
+```yaml
+build-docker-container:
+  name: docker build
+  runs-on: ubuntu-latest
+  needs: unit-and-integration-tests
+  steps:
+    - name: Build and Push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/foodcontainer
+        tags: latest, ${{ github.run_number }}
+```
+
+Deze laatste job is verantwoordelijk voor het builden van een Docker image, om deze vervolgens te pushen naar GitHub packages. Wanneer er een package gepushed word met jouw dockerized applicatie, zal dit er zo uitzien:
+
+![asdfa](https://user-images.githubusercontent.com/60918040/114735597-a31fb300-9d45-11eb-8ac3-aac1c0f1abaf.png)
+
+Deze job is afhankelijk van de test job die moet slagen. Zoals je ziet gebruik ik ook hier weer een action die van de marketplace komt. Voor het pushen van een docker image gebruik je de standaard credentials van je account. Deze informatie kun je verkrijgen door middel van de GitHub context.
+
+- github.actor: De login van de gebruiker die de workflow gestart heeft
+- github.repository: De eigenaar en repository naam (rakker93/S3-POC-Microservice)
+- github.run_number: Uniek nummer voor elke run van de workflow.
+
+En voor de token kun je de gereserveerde environment variable (secret) gebruiken. Hiervoor gebruik je de 'secret' prefix. `secret.GITHUB_TOKEN`.
+
 ### Bronnen
 
 - [What is CI / CD](https://www.redhat.com/en/topics/devops/what-is-ci-cd)
 - [GitHub Actions Docs](https://docs.github.com/en/actions/learn-github-actions)
 - [Build a CI / CD pipeline from scratch](https://www.youtube.com/watch?v=br48WIwhk2o)
+- [GitHub context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#contexts)
+- [Github environment variables](https://docs.github.com/en/actions/reference/environment-variables)

@@ -64,7 +64,6 @@ Om een beter beeld te krijgen van de complexiteit van dit project heb ik de hoof
 - [Hoe gebruik ik dependency injection?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/DependencyInjection.md)
 - [Hoe test ik mijn microservice?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/Testing.md)
 - [Hoe kan ik continous integration / delivery toepassen op mijn microservice?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/CI_CD.md)
-- Hoe dockerize ik mijn microservice?
 - [Hoe implementeer ik de repository pattern in mijn project?](https://github.com/rakker93/S3-POC-Microservice/blob/main/ResearchDocuments/RepositoryPattern.md)
 
 Dit zijn de deelvragen die uiteindelijk moeten helpen om de hoofdvraag te kunnen beantwoorden. De vragen die ik hier stel zullen misschien niet allemaal relevant zijn voor een minimale POC, maar zijn wel onderwerpen die goed samengaan bij het maken van een service. Hoofdvragen bestaan gewoonlijk ook uit kleinere vragen. Deze zullen apart gedocumenteert worden in een markdown (.md) document.
