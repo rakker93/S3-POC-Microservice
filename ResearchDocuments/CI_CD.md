@@ -123,15 +123,18 @@ De volgende job is het automatiseren van de unit en integration tests. Dit zijn 
 build-docker-container:
   name: docker build
   runs-on: ubuntu-latest
-  needs: unit-and-integration-tests
   steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
     - name: Build and Push Docker image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v1
       with:
+        dockerfile: ${{ env.DOCKERFILE_PATH }}
+        repository: rakker93/s3-poc-microservice/foodcontainer
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/foodcontainer
         tags: latest, ${{ github.run_number }}
 ```
 
