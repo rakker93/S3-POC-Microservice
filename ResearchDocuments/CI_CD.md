@@ -48,6 +48,7 @@ on:
 
 env:
   SOLUTION_PATH: ./Food.Service/FoodAPI.sln
+  DOCKERFILE_PATH: ./Food.Service/FoodAPI/dockerfile
 ```
 
 In het eerste stuk van je workflow specificeer je normaal de workflow naam en de events waar je de workflow op wil laten triggeren. Normaal gesproken trigger je je workflow bij het pushen aar een branch, pull request, of mergen. In dit geval gebruik ik `workflow_dispatch`, wat betekend dat er een knop beschikbaar word gesteld in GitHub om de workflow handmatig te triggeren. Dit heb ik gedaan om de logs schoon te houden en om overzicht te bewaren tijdens het leren.
